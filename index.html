@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abhishek Sharma — Mobile Developer</title>
+<meta name="description" content="Abhishek Sharma · Android & Mobile Developer · Kotlin, Flutter, AI-powered apps" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ambient background -->
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- ─────────── NAV ─────────── -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">A</span>
+      <span class="logo-text">Abhishek<em>.dev</em></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact" class="nav-cta">Contact me</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─────────── HERO ─────────── -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="pulse-dot"></span> Open to opportunities
+      </div>
+      <h1 class="hero-title">
+        <span class="line"><span class="line-in li1">Building apps that</span></span>
+        <span class="line"><span class="line-in li2"><span class="type-sequence">
+          <span class="type-word">think.</span>
+          <span class="type-word">scale.</span>
+          <span class="type-word">delight.</span>
+        </span></span></span>
+      </h1>
+      <p class="hero-sub reveal d2">
+        I'm <strong>Abhishek Sharma</strong> — a Mobile Developer from Noida, India,
+        crafting fast, reliable Android experiences with Kotlin, Jetpack Compose and AI.
+        From 99.2% crash-free sessions to apps serving 3,000+ registrations without downtime.
+      </p>
+      <div class="hero-actions reveal d3">
+        <a href="#projects" class="btn btn-primary">
+          View my work
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="hero-stats reveal d4">
+        <div class="stat"><span class="stat-num" data-count="2">0</span><span class="stat-plus">+</span><p>Years building<br/>mobile apps</p></div>
+        <div class="stat"><span class="stat-num" data-count="99">0</span><span class="stat-plus">.2%</span><p>Crash-free<br/>users at NEETprep</p></div>
+        <div class="stat"><span class="stat-num" data-count="3000">0</span><span class="stat-plus">+</span><p>Registrations handled<br/>at peak traffic</p></div>
+        <div class="stat"><span class="stat-num" data-count="30">0</span><span class="stat-plus">%</span><p>Faster API response<br/>at TheHomy</p></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <p class="visual-caption">Live WebGL · morphing particle engine</p>
+    </div>
+  </div>
+  <canvas id="hero3d"></canvas>
+  <div class="hero-scroll reveal d5"><span></span></div>
+</header>
+
+<main>
+<!-- ─────────── SKILLS ─────────── -->
+<section id="skills" class="section">
+  <div class="container">
+    <p class="section-kicker reveal">Capabilities</p>
+    <h2 class="section-title reveal d1">A complete toolkit.<br/><span class="grad-text">For end-to-end product work.</span></h2>
+
+    <div class="skills-grid">
+      <div class="card skill-card reveal">
+        <div class="card-icon">📱</div>
+        <h3>Languages</h3>
+        <div class="chips">
+          <span class="chip">Kotlin</span><span class="chip">Java</span><span class="chip">Dart</span>
+          <span class="chip">Flutter</span><span class="chip">Python</span><span class="chip">JavaScript</span>
+        </div>
+      </div>
+      <div class="card skill-card reveal d1">
+        <div class="card-icon">⚙️</div>
+        <h3>Frameworks</h3>
+        <div class="chips">
+          <span class="chip">Android SDK</span><span class="chip">React</span><span class="chip">Node.js</span>
+          <span class="chip">Flask</span><span class="chip">Firebase</span><span class="chip">RESTful APIs</span>
+        </div>
+      </div>
+      <div class="card skill-card reveal d2">
+        <div class="card-icon">🧩</div>
+        <h3>Libraries</h3>
+        <div class="chips">
+          <span class="chip">Jetpack Compose</span><span class="chip">Retrofit</span><span class="chip">Dagger Hilt</span>
+          <span class="chip">Room</span><span class="chip">WorkManager</span><span class="chip">Coroutines</span><span class="chip">Camerax</span>
+        </div>
+      </div>
+      <div class="card skill-card reveal d3">
+        <div class="card-icon">🛠</div>
+        <h3>Dev Tools & Methods</h3>
+        <div class="chips">
+          <span class="chip">Git</span><span class="chip">Docker</span><span class="chip">Jenkins</span>
+          <span class="chip">Google Cloud</span><span class="chip">CI/CD</span><span class="chip">Agile</span><span class="chip">TDD</span>
+        </div>
+      </div>
+      <div class="card skill-card learning-card reveal d4">
+        <div class="card-icon">🚀</div>
+        <h3>Currently Learning <span class="learning-badge">2026 focus</span></h3>
+        <div class="chips">
+          <span class="chip chip-learning">Kotlin Multiplatform (KMP)</span>
+          <span class="chip chip-learning">Compose Multiplatform</span>
+          <span class="chip chip-learning">LLM API Integration</span>
+          <span class="chip chip-learning">On-device AI (Gemini Nano)</span>
+          <span class="chip chip-learning">Unit Testing (JUnit, MockK)</span>
+          <span class="chip chip-learning">UI Testing (Espresso, Compose Test)</span>
+          <span class="chip chip-learning">GraphQL</span>
+          <span class="chip chip-learning">Performance Profiling (Perfetto)</span>
+          <span class="chip chip-learning">Android App Security</span>
+          <span class="chip chip-learning">Play Store Publishing & ASO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── EXPERIENCE ─────────── -->
+<section id="experience" class="section section-alt">
+  <div class="container">
+    <p class="section-kicker reveal">Experience</p>
+    <h2 class="section-title reveal d1">Where I've <span class="grad-text">shipped.</span></h2>
+
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-dot"></div>
+        <div class="card t-card">
+          <div class="t-head">
+            <div>
+              <h3>Mobile Developer</h3>
+              <p class="t-company">NEETprep</p>
+            </div>
+            <span class="t-date">Aug 2024 — Present</span>
+          </div>
+          <ul>
+            <li>Developed Kotlin features for NEET exam aspirants, focused on UX and performance.</li>
+            <li>Implemented multithreading for background tasks — <strong>25% faster app load time</strong>.</li>
+            <li>Raised crash-free users to <strong>99.2%</strong>, improving reliability and engagement.</li>
+            <li>Enhanced UI responsiveness with modern state management for smoother navigation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-dot"></div>
+        <div class="card t-card">
+          <div class="t-head">
+            <div>
+              <h3>Mobile Developer</h3>
+              <p class="t-company">TheHomy</p>
+            </div>
+            <span class="t-date">Apr 2024 — Aug 2024</span>
+          </div>
+          <ul>
+            <li>Led mobile development for a home services platform.</li>
+            <li>Integrated a <strong>secure payment gateway</strong> and performance tracking.</li>
+            <li>Optimized API usage — <strong>30% lower response time</strong>.</li>
+            <li>Collaborated with backend to improve cross-platform data sync.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="t-item reveal">
+        <div class="t-dot"></div>
+        <div class="card t-card">
+          <div class="t-head">
+            <div>
+              <h3>Mobile Developer Intern</h3>
+              <p class="t-company">SmartPilzz</p>
+            </div>
+            <span class="t-date">Dec 2023 — Mar 2024</span>
+          </div>
+          <ul>
+            <li>Implemented <strong>AI models</strong> for personalized medicine recommendations.</li>
+            <li>Built responsive UI consistent across devices.</li>
+            <li>Improved maintainability with modular design and best practices.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── PROJECTS ─────────── -->
+<section id="projects" class="section">
+  <div class="container">
+    <p class="section-kicker reveal">Projects</p>
+    <h2 class="section-title reveal d1">Things I've <span class="grad-text">built.</span></h2>
+
+    <div class="projects-grid">
+      <article class="card project-card reveal tilt">
+        <div class="p-glow"></div>
+        <div class="p-tags"><span>Multi-module</span><span>Clean Architecture</span><span>DI</span></div>
+        <h3>RickAndMorty App</h3>
+        <p>Multi-module Android app with separate network and UI layers, SOLID principles, caching and full offline mode.</p>
+        <div class="p-metrics"><span>🧱 Modular</span><span>📴 Offline-first</span></div>
+      </article>
+
+      <article class="card project-card reveal d1 tilt">
+        <div class="p-glow"></div>
+        <div class="p-tags"><span>MVVM</span><span>Dagger Hilt</span><span>Retrofit</span></div>
+        <h3>Flatmate Finder</h3>
+        <p>Tinder-style swipeable cards (CardStackView) for finding flatmates, with optimized networking and dependency injection.</p>
+        <div class="p-metrics"><span>👆 +20% interactions</span><span>⚡ −15% latency</span></div>
+      </article>
+
+      <article class="card project-card reveal d2 tilt">
+        <div class="p-glow"></div>
+        <div class="p-tags"><span>Gemini SDK</span><span>AI / ML</span></div>
+        <h3>NutriFit</h3>
+        <p>AI-powered food scanner that analyzes nutrition from photos and suggests diets — used by 50+ real users.</p>
+        <div class="p-metrics"><span>🎯 90% accuracy</span><span>🍎 Food recognition</span></div>
+      </article>
+
+      <article class="card project-card reveal d3 tilt">
+        <div class="p-glow"></div>
+        <div class="p-tags"><span>Clean Code</span><span>Razorpay</span></div>
+        <h3>Zealicon24</h3>
+        <p>Official college fest app — managed 3,000+ registrations at peak traffic with zero downtime and secure payments.</p>
+        <div class="p-metrics"><span>💳 1,200 paid reg.</span><span>✅ 99.9% success</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── EDUCATION & CERTS ─────────── -->
+<section id="education" class="section section-alt">
+  <div class="container">
+    <p class="section-kicker reveal">Education & Credentials</p>
+    <h2 class="section-title reveal d1">The <span class="grad-text">foundation.</span></h2>
+
+    <div class="edu-grid">
+      <div class="card edu-card reveal">
+        <h3>🎓 JSS Academy of Technical Education, Noida</h3>
+        <p class="t-company">B.E. Information Technology · SGPA 7.6/10</p>
+        <span class="t-date">2021 — 2025</span>
+      </div>
+      <div class="card edu-card reveal d1">
+        <h3>🏫 Khalsa Mont. Sen. Sec. School</h3>
+        <p class="t-company">Higher Secondary: 91% · Secondary: 82.6%</p>
+        <span class="t-date">2017 — 2020</span>
+      </div>
+      <div class="card edu-card reveal d2 wide">
+        <h3>📜 Certifications & Achievements</h3>
+        <div class="chips">
+          <span class="chip">Udemy Android Course</span>
+          <span class="chip">ICPC 2023 · Team TheDynamicSamurais</span>
+          <span class="chip">PHP & MySQL — IIT Bombay</span>
+          <span class="chip">Microsoft Azure AI Fundamentals</span>
+          <span class="chip">Smart India Hackathon 2022</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── CONTACT / FOOTER ─────────── -->
+<footer id="contact" class="footer">
+  <div class="container">
+    <h2 class="footer-title reveal">Let's build something<br/><span class="grad-text">worth shipping.</span></h2>
+    <p class="footer-sub reveal d1">Available for mobile development roles, freelance projects, and collaborations.</p>
+    <div class="footer-actions reveal d2">
+      <a href="mailto:AbhishekSharma10a@gmail.com" class="btn btn-primary">
+        AbhishekSharma10a@gmail.com
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="tel:+918218412829" class="btn btn-ghost">+91 8218412829</a>
+    </div>
+    <div class="footer-links reveal d3">
+      <a href="#">LinkedIn</a><a href="#">GitHub</a><a href="#">Portfolio</a>
+    </div>
+    <p class="footer-copy">© 2026 Abhishek Sharma · Noida, India · Crafted with motion in mind.</p>
+  </div>
+</footer>
+</main>
+
+<script src="script.js"></script>
+<script type="importmap">
+  { "imports": { "three": "./vendor/three.module.js" } }
+</script>
+<script type="module" src="three-hero.js"></script>
+</body>
+</html>
