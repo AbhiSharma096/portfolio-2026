@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Post — Abhishek Sharma</title>
+<meta name="description" content="Writing by Abhishek Sharma on mobile development, Kotlin and Jetpack Compose." />
+<meta name="theme-color" content="#FBFBFD" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="blog.css" />
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">
+      <span class="logo-mark">A</span>
+      <span class="logo-text">Abhishek<em>.dev</em></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html">Home</a>
+      <a href="index.html" class="current">Writing</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#contact" class="nav-cta">Contact me</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main class="post-main container">
+  <a class="back-link" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    All posts
+  </a>
+
+  <div id="postRoot">
+    <header class="post-header">
+      <div class="post-tags" id="postTags"></div>
+      <h1 id="postTitle" class="skeleton" style="height:2.4em;max-width:620px"></h1>
+      <p class="post-dek" id="postDek"></p>
+      <div class="post-meta" id="postMeta"></div>
+    </header>
+
+    <div class="post-layout">
+      <aside class="toc" id="tocWrap" hidden>
+        <p class="toc-title">On this page</p>
+        <nav id="toc"></nav>
+      </aside>
+      <div>
+        <article class="prose" id="postBody">
+          <p class="skeleton" style="height:1em;width:90%"></p>
+          <p class="skeleton" style="height:1em;width:80%"></p>
+          <p class="skeleton" style="height:1em;width:86%"></p>
+        </article>
+        <div class="post-share" id="postShare" hidden>
+          <span>Share:</span>
+          <a id="shareX" href="#" target="_blank" rel="noopener">Post on X</a>
+          <a id="shareLinkedIn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <button type="button" id="copyLink">Copy link</button>
+        </div>
+        <nav class="post-nav" id="postNav"></nav>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="page-footer">
+  <div class="footer-inner">
+    <p class="footer-copy">© 2026 Abhishek Sharma · Thanks for reading.</p>
+    <div class="footer-links">
+      <a href="index.html">All posts</a>
+      <a href="../index.html">Portfolio</a>
+      <a href="feed.xml">RSS</a>
+      <a href="mailto:AbhishekSharma10a@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script src="common.js"></script>
+<script src="markdown.js"></script>
+<script src="post.js"></script>
+</body>
+</html>

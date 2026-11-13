@@ -1,0 +1,27 @@
+[
+  {
+    "slug": "structured-concurrency-kotlin",
+    "title": "Structured concurrency in Kotlin, explained by a bug I shipped",
+    "dek": "A screen that kept fetching after the user left taught me more about coroutine scopes than any tutorial. Here's the mental model and the three rules I follow now.",
+    "date": "2026-10-28",
+    "tags": ["Kotlin", "Android", "Coroutines"],
+    "readTime": 3,
+    "featured": true
+  },
+  {
+    "slug": "compose-list-performance",
+    "title": "Seven Compose performance fixes that actually moved the needle",
+    "dek": "Jank on a mid-range phone forced me to stop guessing. These are the changes that showed up in Macrobenchmark — and the popular advice that didn't.",
+    "date": "2026-09-16",
+    "tags": ["Compose", "Performance", "Android"],
+    "readTime": 4
+  },
+  {
+    "slug": "on-device-ai-in-production",
+    "title": "Shipping on-device AI without wrecking battery or trust",
+    "dek": "Everyone demos a model. Shipping one means budgeting watts, designing for 900ms of latency, and being honest about what leaves the device.",
+    "date": "2026-08-04",
+    "tags": ["AI", "Android", "Product"],
+    "readTime": 4
+  }
+]

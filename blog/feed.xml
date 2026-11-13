@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abhishek Sharma — Writing</title>
+    <link>https://abhisheksharma.engineer/blog/</link>
+    <description>Field notes on Kotlin, Jetpack Compose, on-device AI, and shipping reliable Android apps.</description>
+    <language>en</language>
+    <lastBuildDate>Wed, 28 Oct 2026 09:00:00 +0000</lastBuildDate>
+    <atom:link href="https://abhisheksharma.engineer/blog/feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>Structured concurrency in Kotlin, explained by a bug I shipped</title>
+      <link>https://abhisheksharma.engineer/blog/post.html?slug=structured-concurrency-kotlin</link>
+      <guid>https://abhisheksharma.engineer/blog/post.html?slug=structured-concurrency-kotlin</guid>
+      <pubDate>Wed, 28 Oct 2026 09:00:00 +0000</pubDate>
+      <description>A screen that kept fetching after the user left taught me more about coroutine scopes than any tutorial. Here's the mental model and the three rules I follow now.</description>
+    </item>
+
+    <item>
+      <title>Seven Compose performance fixes that actually moved the needle</title>
+      <link>https://abhisheksharma.engineer/blog/post.html?slug=compose-list-performance</link>
+      <guid>https://abhisheksharma.engineer/blog/post.html?slug=compose-list-performance</guid>
+      <pubDate>Wed, 16 Sep 2026 09:00:00 +0000</pubDate>
+      <description>Jank on a mid-range phone forced me to stop guessing. These are the changes that showed up in Macrobenchmark — and the popular advice that didn't.</description>
+    </item>
+
+    <item>
+      <title>Shipping on-device AI without wrecking battery or trust</title>
+      <link>https://abhisheksharma.engineer/blog/post.html?slug=on-device-ai-in-production</link>
+      <guid>https://abhisheksharma.engineer/blog/post.html?slug=on-device-ai-in-production</guid>
+      <pubDate>Tue, 04 Aug 2026 09:00:00 +0000</pubDate>
+      <description>Everyone demos a model. Shipping one means budgeting watts, designing for 900ms of latency, and being honest about what leaves the device.</description>
+    </item>
+  </channel>
+</rss>

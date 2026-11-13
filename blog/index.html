@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Writing — Abhishek Sharma</title>
+<meta name="description" content="Field notes on Kotlin, Jetpack Compose, on-device AI and shipping reliable Android apps, by Abhishek Sharma." />
+<meta name="theme-color" content="#FBFBFD" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="blog.css" />
+<link rel="alternate" type="application/rss+xml" title="Abhishek Sharma — Writing" href="feed.xml" />
+</head>
+<body>
+
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">
+      <span class="logo-mark">A</span>
+      <span class="logo-text">Abhishek<em>.dev</em></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html">Home</a>
+      <a href="index.html" class="current">Writing</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#contact" class="nav-cta">Contact me</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+  <header class="blog-hero">
+    <div class="container">
+      <p class="kicker reveal">Writing</p>
+      <h1 class="blog-title reveal d1">
+        Notes on <span class="grad-text">building mobile</span><br />
+        things that ship.
+      </h1>
+      <p class="blog-sub reveal d2">
+        Field notes on Kotlin, Jetpack Compose, on-device AI, and the unglamorous work of
+        making apps reliable. Written while building them.
+      </p>
+      <div class="blog-hero-meta reveal d3">
+        <span class="dot-live"></span>
+        <span id="postCount">Loading posts…</span>
+        <span class="sep">·</span>
+        <a href="feed.xml">RSS feed</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="blog-body">
+    <div class="container">
+      <div class="controls">
+        <label class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <input id="search" type="search" placeholder="Search posts…" aria-label="Search posts" autocomplete="off" />
+        </label>
+        <div class="tag-filter" id="tagFilter" aria-label="Filter by topic"></div>
+      </div>
+
+      <div id="featuredWrap"></div>
+      <div class="post-grid" id="postGrid"></div>
+
+      <div class="empty-state" id="empty">
+        <strong>Nothing here yet</strong>
+        Try a different search or topic.
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="page-footer">
+  <div class="footer-inner">
+    <p class="footer-copy">© 2026 Abhishek Sharma · Built with vanilla HTML, CSS &amp; a tiny Markdown renderer.</p>
+    <div class="footer-links">
+      <a href="../index.html">Portfolio</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="feed.xml">RSS</a>
+      <a href="mailto:AbhishekSharma10a@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script src="common.js"></script>
+<script src="blog.js"></script>
+</body>
+</html>
