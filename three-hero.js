@@ -456,8 +456,10 @@ function tick() {
   dust.position.y = (1 - scrollFade) * 1.2;
 
   renderer.render(scene, camera);
-  requestAnimationFrame(tick);
+  if (heroVisible) requestAnimationFrame(tick);
 }
+
+let heroVisible = true;
 
 if (!prefersReducedMotion) {
   tick();
@@ -470,7 +472,11 @@ if (!prefersReducedMotion) {
 /* pause rendering when hero is off-screen (battery friendly) */
 const heroIO = new IntersectionObserver(
   ([e]) => {
-    canvas.style.visibility = e.isIntersecting ? "visible" : "hidden";
+    const wasVisible = heroVisible;
+    heroVisible = e.isIntersecting;
+    canvas.style.visibility = heroVisible ? "visible" : "hidden";
+    // resume the loop when the hero scrolls back into view
+    if (!prefersReducedMotion && heroVisible && !wasVisible) tick();
   },
   { threshold: 0 }
 );
