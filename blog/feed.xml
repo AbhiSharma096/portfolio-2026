@@ -5,8 +5,32 @@
     <link>https://abhisheksharma.engineer/blog/</link>
     <description>Field notes on Kotlin, Jetpack Compose, on-device AI, and shipping reliable Android apps.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 28 Oct 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://abhisheksharma.engineer/blog/feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>The portfolio you're reading: one canvas, 12,000 particles, no framework</title>
+      <link>https://abhisheksharma.engineer/blog/post.html?slug=particle-hero-no-framework</link>
+      <guid>https://abhisheksharma.engineer/blog/post.html?slug=particle-hero-no-framework</guid>
+      <pubDate>Sat, 14 Nov 2026 09:00:00 +0000</pubDate>
+      <description>How the hero on this site morphs between a sphere, a torus knot and a galaxy — in a vertex shader, with no build step and no animation library.</description>
+    </item>
+
+    <item>
+      <title>How we got to 99.2% crash-free users without a rewrite</title>
+      <link>https://abhisheksharma.engineer/blog/post.html?slug=crash-free-sessions</link>
+      <guid>https://abhisheksharma.engineer/blog/post.html?slug=crash-free-sessions</guid>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+      <description>Four months, three targeted fixes, and a system for keeping the number stable. Most Android crashes are lifetime bugs, not logic bugs.</description>
+    </item>
+
+    <item>
+      <title>Migrating a real module to Kotlin Multiplatform: start with the boring one</title>
+      <link>https://abhisheksharma.engineer/blog/post.html?slug=kmp-first-module</link>
+      <guid>https://abhisheksharma.engineer/blog/post.html?slug=kmp-first-module</guid>
+      <pubDate>Fri, 06 Nov 2026 09:00:00 +0000</pubDate>
+      <description>Skip the shared login demo. Move the module with zero Android imports, inject the platform, and get commonTest green on two targets.</description>
+    </item>
 
     <item>
       <title>Structured concurrency in Kotlin, explained by a bug I shipped</title>

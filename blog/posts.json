@@ -1,12 +1,36 @@
 [
   {
+    "slug": "particle-hero-no-framework",
+    "title": "The portfolio you're reading: one canvas, 12,000 particles, no framework",
+    "dek": "How the hero on this site morphs between a sphere, a torus knot and a galaxy — in a vertex shader, with no build step and no animation library.",
+    "date": "2026-11-14",
+    "tags": ["Web", "Three.js", "Performance"],
+    "readTime": 4,
+    "featured": true
+  },
+  {
+    "slug": "crash-free-sessions",
+    "title": "How we got to 99.2% crash-free users without a rewrite",
+    "dek": "Four months, three targeted fixes, and a system for keeping the number stable. Most Android crashes are lifetime bugs, not logic bugs.",
+    "date": "2026-11-10",
+    "tags": ["Reliability", "Android", "Production"],
+    "readTime": 5
+  },
+  {
+    "slug": "kmp-first-module",
+    "title": "Migrating a real module to Kotlin Multiplatform: start with the boring one",
+    "dek": "Skip the shared login demo. Move the module with zero Android imports, inject the platform, and get commonTest green on two targets.",
+    "date": "2026-11-06",
+    "tags": ["KMP", "Kotlin", "Architecture"],
+    "readTime": 5
+  },
+  {
     "slug": "structured-concurrency-kotlin",
     "title": "Structured concurrency in Kotlin, explained by a bug I shipped",
     "dek": "A screen that kept fetching after the user left taught me more about coroutine scopes than any tutorial. Here's the mental model and the three rules I follow now.",
     "date": "2026-10-28",
     "tags": ["Kotlin", "Android", "Coroutines"],
-    "readTime": 3,
-    "featured": true
+    "readTime": 3
   },
   {
     "slug": "compose-list-performance",
