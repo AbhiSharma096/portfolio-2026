@@ -5,15 +5,15 @@
     <link>https://abhisheksharma.engineer/blog/</link>
     <description>Field notes on Kotlin, Jetpack Compose, on-device AI, and shipping reliable Android apps.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 14 Nov 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://abhisheksharma.engineer/blog/feed.xml" rel="self" type="application/rss+xml" />
 
     <item>
-      <title>The portfolio you're reading: one canvas, 12,000 particles, no framework</title>
+      <title>The portfolio you're reading: 9,000 points, one orbital instrument, no framework</title>
       <link>https://abhisheksharma.engineer/blog/post.html?slug=particle-hero-no-framework</link>
       <guid>https://abhisheksharma.engineer/blog/post.html?slug=particle-hero-no-framework</guid>
       <pubDate>Sat, 14 Nov 2026 09:00:00 +0000</pubDate>
-      <description>How the hero on this site morphs between a sphere, a torus knot and a galaxy — in a vertex shader, with no build step and no animation library.</description>
+      <description>How the hero on this site renders a dotted globe, precessing orbits and a tick bezel in a single WebGL canvas — with no build step and no animation library.</description>
     </item>
 
     <item>

@@ -1,11 +1,11 @@
 [
   {
     "slug": "particle-hero-no-framework",
-    "title": "The portfolio you're reading: one canvas, 12,000 particles, no framework",
-    "dek": "How the hero on this site morphs between a sphere, a torus knot and a galaxy — in a vertex shader, with no build step and no animation library.",
+    "title": "The portfolio you're reading: 9,000 points, one orbital instrument, no framework",
+    "dek": "How the hero on this site renders a dotted globe, precessing orbits and a tick bezel in a single WebGL canvas — with no build step and no animation library.",
     "date": "2026-11-14",
     "tags": ["Web", "Three.js", "Performance"],
-    "readTime": 4,
+    "readTime": 5,
     "featured": true
   },
   {

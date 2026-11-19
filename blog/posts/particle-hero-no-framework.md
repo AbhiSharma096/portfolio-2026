@@ -1,4 +1,4 @@
-# The portfolio you're reading: one canvas, 12,000 particles, no framework
+# The portfolio you're reading: 9,000 points, one orbital instrument, no framework
 
 I have shipped Android apps with more dependencies than this entire site. No React, no Next.js, no Tailwind, no build step — just an `index.html`, a stylesheet, two scripts, and a vendored copy of Three.js.
 
@@ -12,119 +12,168 @@ I wanted three things:
 - A visual that feels alive without being a video.
 - A deploy that is `git push` and nothing else.
 
-The obvious answer was a static site. The less obvious answer was doing the 3D myself instead of exporting a Lottie file or a looping MP4. A 12-second video at a decent bitrate is several megabytes. The particle system is a few kilobytes of code and about 12,000 points, and it reacts to the pointer.
+The obvious answer was a static site. The less obvious answer was doing the 3D myself instead of exporting a Lottie file or a looping MP4. A 12-second video at a decent bitrate is several megabytes. The instrument is a few kilobytes of code and 9,000 points, and it reacts to the pointer.
 
-So: vanilla HTML, CSS, and one WebGL canvas.
+So: vanilla HTML, CSS, and one WebGL canvas. The frame, the mono labels, and the coordinates are DOM. Only the globe and its orbit are WebGL.
 
-## Three shapes, one buffer
+## One sphere, nine thousand dots
 
-The sculpture morphs between a sphere, a torus knot, and a spiral galaxy. The key design decision is that **all three shapes exist at the same time, in the same buffer**.
-
-At load time I generate three position arrays with the same number of points:
+The centrepiece is a dotted sphere. Every point is placed once, at load time, with a Fibonacci distribution so the surface has no clumps or seams:
 
 ```js
-const COUNT = window.innerWidth < 820 ? 6000 : 12000;
-const aSphere = spherePoints(COUNT);
-const aKnot   = knotPoints(COUNT);
-const aGalaxy = galaxyPoints(COUNT);
-```
+const COUNT = window.innerWidth < 820 ? 4200 : 9000;
+const RADIUS = 2.1;
+const golden = Math.PI * (3 - Math.sqrt(5));
 
-Each one is a `Float32Array` of `COUNT * 3` values. They become geometry attributes, not geometry positions:
+for (let i = 0; i < COUNT; i++) {
+  const y = 1 - (i / (COUNT - 1)) * 2;
+  const r = Math.sqrt(1 - y * y);
+  const theta = golden * i;
 
-```js
-geometry.setAttribute("aSphere", new THREE.BufferAttribute(aSphere, 3));
-geometry.setAttribute("aKnot",   new THREE.BufferAttribute(aKnot, 3));
-geometry.setAttribute("aGalaxy", new THREE.BufferAttribute(aGalaxy, 3));
-geometry.setAttribute("aSize",   new THREE.BufferAttribute(sizes, 1));
-geometry.setAttribute("aColor",  new THREE.BufferAttribute(colors, 3));
-```
+  positions[i * 3]     = Math.cos(theta) * r * RADIUS;
+  positions[i * 3 + 1] = y * RADIUS;
+  positions[i * 3 + 2] = Math.sin(theta) * r * RADIUS;
 
-Then the vertex shader blends them with three weights:
-
-```glsl
-uniform float uW0;
-uniform float uW1;
-uniform float uW2;
-
-vec3 pos = aSphere * uW0 + aKnot * uW1 + aGalaxy * uW2;
-```
-
-That is the whole trick. A CPU-side morph would touch 36,000 floats every frame just to move points, then upload them again. Here it is three multiply-adds per vertex, done on the GPU, and the only thing that changes per frame is the weights.
-
-## The scheduler is six lines
-
-The shapes hold for 5.5 seconds, then crossfade over 1.8 seconds:
-
-```js
-const PHASE = 5.5;
-const FADE  = 1.8;
-
-if (local > PHASE) {
-  const k = (local - PHASE) / FADE;
-  const eased = k * k * (3 - 2 * k); // smoothstep
-  w[idx] = 1 - eased;
-  w[next] = eased;
+  sizes[i]   = Math.random() < 0.04 ? 2.6 : 1.05 + Math.random() * 1.05;
+  phases[i]  = Math.random() * Math.PI * 2;
+  accents[i] = Math.random() < 0.08 ? 1 : 0;
 }
 ```
 
-A linear crossfade looks mechanical because points travel in straight lines at constant speed. A smoothstep eases both ends of the transition, so the sculpture seems to *gather* into the next shape rather than slide. Small detail, huge difference in how it reads.
+The size, phase, and accent arrays are separate attributes. `aPhase` gives every dot its own twinkle phase, so the surface shimmers instead of pulsing like a balloon. `aAccent` makes roughly one in twelve dots blue.
 
-The points also breathe, using a sine wave offset along each point's normal:
+The vertex shader does the rest. The interesting part is not moving the dots around; it is deciding which ones should be visible:
 
 ```glsl
-pos += normalize(pos + 0.0001) * sin(uTime * 1.4 + aPhase) * 0.045;
+vec3 worldNormal = normalize(mat3(modelMatrix) * normalize(position));
+vec3 viewDir = normalize(cameraPosition - world.xyz);
+float facing = dot(worldNormal, viewDir);
+float front = smoothstep(-0.5, 0.62, facing);
+
+float scan = smoothstep(0.20, 0.0, abs(pos.y - uScan));
+float twinkle = 0.82 + 0.18 * sin(uTime * 1.5 + aPhase * 4.0);
+
+vAlpha = mix(0.06, 0.92, front) * twinkle + scan * 0.55;
 ```
 
-`aPhase` is randomized per point, so the surface shimmers instead of pulsing like a single balloon.
+Dots facing the camera read at full strength. Dots on the back hemisphere fade to 6%, which gives the sphere depth without a second pass. A soft horizontal band travels across the sphere on a sine, tinting and brightening the dots it passes. That is the only "scanning" effect, and it is four lines of GLSL.
 
-## The motion layer is 100 lines
+## The orbit is not made of lines
 
-Everything outside the canvas is the same three-brush system:
+The first version used `THREE.LineLoop` for the rings. It looked wrong on every Retina display: WebGL ignores `lineWidth` above 1 on most drivers, so a 1-pixel line becomes half a CSS pixel and disappears into the paper background.
 
-1. **One `IntersectionObserver`** adds a `.visible` class to `.reveal` elements. All the blur-in, rise, and stagger comes from CSS transitions with per-element delays.
-2. **A second observer** drives the heading word-mask effect, splitting headings into spans on load.
-3. **A scroll listener** toggles the frosted nav — passive, and it does nothing but flip a class.
+The fix was to stop drawing lines and start drawing geometry. Each ring is a ribbon of quads, two triangles per segment:
 
-There is no animation library, no GSAP timeline, no scroll-hijacking. The page is still a document. You can select text, use find-in-page, and press back without the history getting weird.
+```js
+function circleRing(radius, rotX, rotY, color, opacity, dashed = false) {
+  const arr = [];
+  const seg = 360;
 
-And because some people get motion sick, everything is gated:
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+  for (let i = 0; i < seg; i++) {
+    if (dashed && i % 5 >= 2) continue; // 2 segments on, 3 off
+    const a0 = (i / seg) * Math.PI * 2;
+    const a1 = ((i + 1) / seg) * Math.PI * 2;
+    quad(arr,
+      Math.cos(a0) * radius, Math.sin(a0) * radius,
+      Math.cos(a1) * radius, Math.sin(a1) * radius,
+      0.012);
   }
+
+  const mesh = ribbonMesh(arr, color, opacity);
+  mesh.rotation.x = rotX;
+  mesh.rotation.y = rotY;
+  return mesh;
 }
 ```
 
-For the canvas, reduced motion means one static frame instead of the loop. The 3D does not disappear; it just stops moving.
+A `0.012`-unit ribbon is about one device pixel at this stage size. It stays crisp at any pixel ratio, and opacity fades it into the paper. Four rings are enough: two ink orbits at different tilts, one blue meridian, and a dashed blue orbit that makes the whole thing feel measured rather than decorative.
+
+The tick bezel is the same idea. Seventy-two radial quads, every eighteenth one longer and blue:
+
+```js
+const TOTAL = 72;
+const inner = RADIUS + 0.72;
+
+for (let i = 0; i < TOTAL; i++) {
+  const a = (i / TOTAL) * Math.PI * 2;
+  const isMajor = i % 18 === 0;
+  const outer = inner + (isMajor ? 0.17 : 0.06);
+  // ...
+}
+```
+
+No textures, no sprites, no post-processing. Just triangles.
+
+## Motion is six sines and a lerp
+
+The instrument is always moving, but slowly. The globe turns at `0.075` radians per second — one revolution every 84 seconds. The rings precess by a few hundredths of a radian. Two satellite nodes ride the orbits:
+
+```js
+ringA.rotation.x = 1.18 + Math.sin(t * 0.09) * 0.05;
+ringB.rotation.y = -0.5 + Math.cos(t * 0.07) * 0.09;
+meridian.rotation.y = 0.42 + t * 0.14;
+dashedOrbit.rotation.y = -0.28 + Math.sin(t * 0.06) * 0.1;
+
+const a = t * 0.42;
+nodeA.position
+  .set(Math.cos(a) * (RADIUS + 0.44), Math.sin(a) * (RADIUS + 0.44), 0)
+  .applyEuler(ringA.rotation);
+```
+
+Pointer parallax is a lerp, not a spring:
+
+```js
+easedX += (pointerX - easedX) * 0.045;
+orb.rotation.y = t * 0.075 + easedX * 0.22;
+```
+
+A spring would overshoot and draw attention to the effect. The lerp makes the instrument feel heavy, like it has mass. The scroll position fades the whole stage and lifts it slightly as the hero leaves; the `IntersectionObserver` stops the loop entirely once the hero is off-screen.
+
+That last detail matters more than it sounds. A `requestAnimationFrame` loop that only checks visibility but never stops is still a loop. Scrolling to the projects section should stop the GPU work, not just hide it.
 
 ## The performance budget
 
 The hero is the most expensive thing on the page, so it gets rules:
 
-- **12,000 particles on desktop, 6,000 on mobile.** The shape still reads at half the count.
-- **Pixel ratio capped at 2.** A 3x phone screen does not need 3x the fragments for a glow.
-- **Additive blending, `depthWrite: false`.** No sorting, no z-fighting, and points glow when they overlap.
+- **9,000 points on desktop, 4,200 on mobile.** The sphere still reads at half the count.
+- **Pixel ratio capped at 2.** A 3× phone screen does not need 3× the fragments for a hairline.
+- **No depth writes, additive-free alpha blending.** The dots and rings blend in painter's order; there is nothing to sort.
 - **One generated texture.** The halo is drawn into a 256×256 canvas at runtime instead of downloaded.
-- **The loop pauses when the hero is off-screen.** An `IntersectionObserver` gates the `requestAnimationFrame` call, so scrolling to the projects section stops the GPU work entirely.
+- **The loop pauses when the hero is off-screen.** An `IntersectionObserver` gates the `requestAnimationFrame` call.
+- **One `resize` handler fits the camera to the stage,** so the instrument is never clipped at odd aspect ratios.
 
-That last one is easy to get wrong. A `requestAnimationFrame` loop that only checks visibility but never stops is still a loop. It burns battery to render frames nobody sees.
+The whole canvas is about 370 lines of JavaScript and GLSL. The rest of the page is still a document: selectable text, working find-in-page, normal browser history.
+
+## Reduced motion gets a composed frame
+
+`prefers-reduced-motion` does not remove the instrument. It sets `uTime` to a fixed value, places the scan band, and renders once:
+
+```js
+if (!prefersReducedMotion) {
+  tick();
+} else {
+  uniforms.uTime.value = 2;
+  uniforms.uScan.value = 0.4;
+  renderer.render(scene, camera);
+}
+```
+
+CSS handles the rest: the rotating headline word becomes a single static word, the ticker stops, and the reveal transitions collapse. The page still looks designed; it just stops moving.
 
 ## What I'd change
 
 Three things, honestly:
 
-1. **The heading animates in with JavaScript.** If the script fails, the text is still there but starts at `opacity: 0`. A `<noscript>` override or a CSS-only fallback would be safer.
-2. **The blog is rendered client-side.** Great authoring experience, weaker for crawlers. If search traffic mattered, I would pre-render the Markdown to static HTML at build time and keep the same templates.
-3. **The sculpture could be even cheaper.** Half the particles plus a bloom pass would probably look better than double the particles without one. I chose the boring version.
+1. **The canvas has no `<noscript>` fallback.** The stage frame and labels are still there, and the paper texture still renders, but the globe is empty. A static SVG of the instrument would be a better fallback.
+2. **The blog is rendered client-side.** Great authoring experience, weaker for crawlers. If search traffic mattered, I would pre-render the Markdown to static HTML and keep the same templates.
+3. **The tick bezel could be one instanced mesh.** I build 72 separate quads into two buffers. It is cheap enough, but an `InstancedMesh` would be the more honest solution.
 
 ## The stack, in full
 
 - HTML and CSS, hand-written
 - Three.js, vendored locally (`vendor/three.module.js`) — no CDN dependency
 - One custom vertex shader, one fragment shader, one canvas texture
+- Ribbon geometry for every ring and tick
 - `IntersectionObserver`, `matchMedia`, and about 140 lines of JavaScript for the page chrome
 - Deployed on GitHub Pages behind a custom domain
 
