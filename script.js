@@ -103,7 +103,10 @@ function splitWords(el) {
         node.removeChild(child);
       } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains("w-mask")) {
         if (child.tagName === "BR") { idx = 0; return; } // restart stagger per line
-        walk(child); // recurse into grad-text etc., preserving its styling
+        // keep gradient text intact — wrapping its words in transformed spans
+        // breaks background-clip: text in some browsers
+        if (child.classList.contains("grad-text")) return;
+        walk(child); // recurse into other markup, preserving its styling
       }
     });
   };

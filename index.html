@@ -7,8 +7,8 @@
 <meta name="description" content="Abhishek Sharma · Android & Mobile Developer · Kotlin, Flutter, AI-powered apps" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css?v=20261119c" />
 </head>
 <body>
 
@@ -38,46 +38,96 @@
 </nav>
 
 <!-- ─────────── HERO ─────────── -->
-<header class="hero">
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-grid"></div>
+    <div class="hero-grain"></div>
+  </div>
+
   <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-badge reveal">
-        <span class="pulse-dot"></span> Open to opportunities
+    <div class="hero-topline">
+      <span class="hero-eyebrow reveal"><span class="pulse-dot"></span> Open to opportunities</span>
+      <span class="hero-index reveal d1">Portfolio — 2026</span>
+    </div>
+
+    <div class="hero-main">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="line"><span class="line-in li1">Mobile products</span></span>
+          <span class="line"><span class="line-in li2">that feel</span></span>
+          <span class="line"><span class="line-in li3"><span class="type-sequence">
+            <span class="type-word">effortless.</span>
+            <span class="type-word">inevitable.</span>
+            <span class="type-word">alive.</span>
+          </span></span></span>
+        </h1>
+        <p class="hero-sub reveal d2">
+          I'm <strong>Abhishek Sharma</strong> — a mobile developer in Noida building fast,
+          reliable Android products with Kotlin, Jetpack Compose and on-device AI.
+        </p>
+        <div class="hero-actions reveal d3">
+          <a href="#projects" class="btn btn-primary">
+            View selected work
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="blog/index.html" class="btn btn-ghost">Read the blog</a>
+        </div>
       </div>
-      <h1 class="hero-title">
-        <span class="line"><span class="line-in li1">Building apps that</span></span>
-        <span class="line"><span class="line-in li2"><span class="type-sequence">
-          <span class="type-word">think.</span>
-          <span class="type-word">scale.</span>
-          <span class="type-word">delight.</span>
-        </span></span></span>
-      </h1>
-      <p class="hero-sub reveal d2">
-        I'm <strong>Abhishek Sharma</strong> — a Mobile Developer from Noida, India,
-        crafting fast, reliable Android experiences with Kotlin, Jetpack Compose and AI.
-        From 99.2% crash-free sessions to apps serving 3,000+ registrations without downtime.
-      </p>
-      <div class="hero-actions reveal d3">
-        <a href="#projects" class="btn btn-primary">
-          View my work
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
-      </div>
-      <div class="hero-stats reveal d4">
-        <div class="stat"><span class="stat-num" data-count="2">0</span><span class="stat-plus">+</span><p>Years building<br/>mobile apps</p></div>
-        <div class="stat"><span class="stat-num" data-count="99">0</span><span class="stat-plus">.2%</span><p>Crash-free<br/>users at NEETprep</p></div>
-        <div class="stat"><span class="stat-num" data-count="3000">0</span><span class="stat-plus">+</span><p>Registrations handled<br/>at peak traffic</p></div>
-        <div class="stat"><span class="stat-num" data-count="30">0</span><span class="stat-plus">%</span><p>Faster API response<br/>at TheHomy</p></div>
+
+      <div class="hero-visual reveal d2">
+        <div class="stage-frame" aria-hidden="true">
+          <span class="stage-corner tl"></span>
+          <span class="stage-corner tr"></span>
+          <span class="stage-corner bl"></span>
+          <span class="stage-corner br"></span>
+          <span class="stage-label stage-label-tl">FIG. 01 — ORBITAL FIELD</span>
+          <span class="stage-label stage-label-tr"><span class="live-dot"></span> LIVE</span>
+          <span class="stage-label stage-label-bl">28.5355° N / 77.3910° E</span>
+          <span class="stage-label stage-label-br">WEBGL · 9K PTS</span>
+        </div>
+        <canvas id="hero3d"></canvas>
       </div>
     </div>
-    <div class="hero-visual">
-      <p class="visual-caption">Live WebGL · morphing particle engine</p>
+
+    <div class="hero-stats reveal d4">
+      <div class="stat"><span class="stat-num" data-count="2">0</span><span class="stat-plus">+</span><p>Years shipping<br/>mobile products</p></div>
+      <div class="stat"><span class="stat-num" data-count="99">0</span><span class="stat-plus">.2%</span><p>Crash-free<br/>users at NEETprep</p></div>
+      <div class="stat"><span class="stat-num" data-count="3000">0</span><span class="stat-plus">+</span><p>Registrations handled<br/>at peak traffic</p></div>
+      <div class="stat"><span class="stat-num" data-count="30">0</span><span class="stat-plus">%</span><p>Faster API response<br/>at TheHomy</p></div>
     </div>
   </div>
-  <canvas id="hero3d"></canvas>
-  <div class="hero-scroll reveal d5"><span></span></div>
+
+  <a href="#skills" class="hero-scroll" aria-label="Scroll to skills">
+    <span class="scroll-line"></span>
+    <span>Scroll</span>
+  </a>
 </header>
+
+<!-- ─────────── TICKER ─────────── -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-group">
+      <span class="ticker-item">Kotlin</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Jetpack Compose</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Coroutines</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Kotlin Multiplatform</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Clean Architecture</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">On-device AI</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Material 3</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">CI/CD</span><span class="ticker-dot">·</span>
+    </div>
+    <div class="ticker-group">
+      <span class="ticker-item">Kotlin</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Jetpack Compose</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Coroutines</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Kotlin Multiplatform</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Clean Architecture</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">On-device AI</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Material 3</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">CI/CD</span><span class="ticker-dot">·</span>
+    </div>
+  </div>
+</div>
 
 <main>
 <!-- ─────────── SKILLS ─────────── -->
@@ -298,10 +348,10 @@
 </footer>
 </main>
 
-<script src="script.js"></script>
+<script src="script.js?v=20261119c"></script>
 <script type="importmap">
   { "imports": { "three": "./vendor/three.module.js" } }
 </script>
-<script type="module" src="three-hero.js"></script>
+<script type="module" src="three-hero.js?v=20261119c"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 Personal portfolio site built with vanilla HTML/CSS/JS and **Three.js**, plus a
 Markdown-powered blog under `/blog`.
 
-- 🌌 WebGL hero: morphing particle sculpture (sphere ⇄ torus knot ⇄ galaxy) with custom GLSL shaders
+- 🌐 WebGL hero: dotted orbital instrument (9,000 points, precessing rings, tick bezel) with custom GLSL shaders
 - ✨ Apple-style motion: line-mask headings, word-by-word reveals, blur-in cards
 - 📱 Fully responsive, respects `prefers-reduced-motion`
 - ✍️ Blog: zero-build Markdown posts, search, topic filters, reading progress, TOC, RSS
